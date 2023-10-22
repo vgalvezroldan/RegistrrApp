@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Bienvenido</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <p>Bienvenido, {{ userName }}!</p>
+      <div *ngIf="weatherData">
+        <p>Ubicación: {{ weatherData.name }}</p>
+        <p>Temperatura: {{ weatherData.main.temp }}°C</p>
+        <p>Fecha Actual: {{ getCurrentDate() }}</p>
+        <p>Hora Actual: {{ getCurrentTime() }}</p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button (click)="openRegisteredUsersPage()">Usuarios Registrados</ion-button>
+</ion-content>
