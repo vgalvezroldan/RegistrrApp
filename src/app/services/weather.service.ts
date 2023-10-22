@@ -17,8 +17,8 @@ export class WeatherService {
     return this.http.get<WeatherResponse>(this.apiUrl).pipe(
       map(response => {
         const temperatureKelvin = response.main.temp;
-        const temperatureCelsius = (temperatureKelvin - 273.15).toFixed(1); // Redondear a un decimal
-        response.main.temp = parseFloat(temperatureCelsius); // Convierte de nuevo a número
+        const temperatureCelsius = (temperatureKelvin - 273.15).toFixed(1); 
+        response.main.temp = parseFloat(temperatureCelsius); 
         return response;
       })
     );
