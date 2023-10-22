@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { WeatherService } from '../../services/weather.service'; 
+import { Location } from '@angular/common'; 
 
 @Component({
   selector: 'app-welcome',
@@ -15,7 +16,8 @@ export class WelcomePage implements OnInit {
   constructor(
     private authService: AuthService, 
     private router: Router,
-    private weatherService: WeatherService 
+    private weatherService: WeatherService,
+    private location: Location
   ) {}
   
   ngOnInit() {
@@ -58,5 +60,11 @@ export class WelcomePage implements OnInit {
     this.router.navigate(['/registered-users']); 
   }
 
+  navigateToHome() {
+    this.router.navigate(['/home']); 
+  }
+  navigateBack() {
+   this.location.back(); 
+  }
  
 }

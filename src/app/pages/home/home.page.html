@@ -1,11 +1,27 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Home</ion-title>
+    <ion-title class="ion-text-center">App DuocUC</ion-title> 
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  <ion-button expand="block" routerLink="/login">Login</ion-button>
-  <ion-button expand="block" routerLink="/register">Registrar Usuario</ion-button>
-
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" class="ion-text-center image-container">
+        <img src="assets/images/yEn2L7ny_400x400.jpg" alt="Descripción de la imagen" />
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="auto">
+        <ion-button class="equal-width" routerLink="/login">Login</ion-button>
+      </ion-col>
+      <ion-col size="auto">
+        <ion-button class="equal-width" routerLink="/register">Registro</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-title class="ion-text-center custom-footer-title">Desarrollado por CAVICLA® 2023</ion-title> 
+  </ion-toolbar>
+</ion-footer>

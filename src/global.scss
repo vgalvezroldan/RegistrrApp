@@ -24,3 +24,31 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+.equal-width {
+    width: 140px; 
+  }
+  .custom-footer-title {
+    font-size: 0.8rem; 
+    font-style: italic;
+  }
+  .icon-home, .icon-back{
+    font-size: 1.5rem; 
+    float: right; 
+    cursor: pointer; 
+  }
+  ion-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); 
+    margin: 15px; 
+  }
+  ion-content {
+    --background: #808080
+  }
+
+  .header-md,
+  .footer-md {
+    background: #000080 !important; 
+    color: #FFFF00 !important; 
+  }
+  img {
+    border-radius: 25px;  
+  }

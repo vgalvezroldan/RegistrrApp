@@ -32,4 +32,8 @@ export class LoginPage {
   openPasswordRecovery() {
     this.router.navigate(['/password-recovery']);
   }
+
+  navigateToHome() {
+    this.router.navigate(['/home']); 
+  }
 }

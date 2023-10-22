@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,8 @@ export class RegisterPage {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {}
 
   register() {
@@ -29,6 +31,12 @@ export class RegisterPage {
       
       console.error('Error en el registro. El correo electrónico ya está en uso.');
     }
+  }
+  navigateToHome() {
+    this.router.navigate(['/home']); 
+  }
+  navigateBack() {
+   this.location.back(); 
   }
 
 }

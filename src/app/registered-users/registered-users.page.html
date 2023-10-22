@@ -1,16 +1,43 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Usuarios Registrados</ion-title>
+    <ion-icon name="arrow-back-outline" role="img" class="icon-back" aria-label="back" (click)="navigateBack()"></ion-icon>
+    <ion-icon name="home-outline" role="img" class="icon-home" aria-label="home" (click)="navigateToHome()"></ion-icon>
+    <ion-title class="ion-text-center">Usuarios Registrados</ion-title> 
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let user of users">
-      <ion-label>
-        <h2>{{ user.name }}</h2>
-        <p>{{ user.email }}</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" class="ion-text-center image-container">
+       
+        <img src="assets/images/yEn2L7ny_400x400.jpg" alt="Descripción de la imagen" />
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" class="ion-text-center">
+
+        <ion-list>
+          <ion-card *ngFor="let user of users"> 
+            <ion-card-content>
+              <ion-label>
+                <h2>{{ user.name }}</h2>
+                <p>{{ user.email }}</p>
+              </ion-label>
+            </ion-card-content>
+          </ion-card>
+        </ion-list>
+        
+      
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-row class="ion-align-items-center">
+      <ion-title class="ion-text-center custom-footer-title">Desarrollado por CAVICLA® 2023</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>
