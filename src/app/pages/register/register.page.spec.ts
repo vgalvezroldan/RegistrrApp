@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RegisterPage } from './register.page';
 import { AuthService } from '../../services/auth.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, AlertController } from '@ionic/angular';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('RegisterPage', () => {
@@ -11,60 +11,64 @@ describe('RegisterPage', () => {
   let fixture: ComponentFixture<RegisterPage>;
   let authServiceMock: any;
   let routerMock: any;
+  let alertControllerSpy: any;
 
-  beforeEach(async () => {
+  beforeEach(waitForAsync(() => {
     authServiceMock = jasmine.createSpyObj('AuthService', ['registerUser']);
     routerMock = jasmine.createSpyObj('Router', ['navigate']);
+    alertControllerSpy = jasmine.createSpyObj('AlertController', ['create']);
 
-    await TestBed.configureTestingModule({
-      declarations: [ RegisterPage ],
+    TestBed.configureTestingModule({
+      declarations: [RegisterPage],
       imports: [
         IonicModule.forRoot(),
         RouterTestingModule
       ],
       providers: [
         { provide: AuthService, useValue: authServiceMock },
-        { provide: Router, useValue: routerMock }
+        { provide: Router, useValue: routerMock },
+        { provide: AlertController, useValue: alertControllerSpy }
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
-  });
+  }));
 
   beforeEach(() => {
-    localStorage.clear();  // Limpia localStorage antes de cada prueba
     fixture = TestBed.createComponent(RegisterPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('debe existir el componente', () => {
+  it('el componente debe existir', () => {
     expect(component).toBeTruthy();
   });
 
-  it('debe navegar a la página de inicio si el registro es exitoso', () => {
+  it('debe navegar a la página de profesor si el registro es exitoso', () => {
     authServiceMock.registerUser.and.returnValue(true);
     component.user.name = 'Test User';
-    component.user.email = 'test@example.com';
+    component.user.email = 'test@correo.com';
     component.user.password = 'password123';
 
     component.register();
 
     expect(localStorage.getItem('isLoggedIn')).toBe('true');
-    expect(localStorage.getItem('loggedInEmail')).toBe('test@example.com');
-    expect(routerMock.navigate).toHaveBeenCalledWith(['/home']);
+    expect(localStorage.getItem('loggedInEmail')).toBe('test@correo.com');
+    expect(routerMock.navigate).toHaveBeenCalledWith(['/profesor']);
   });
 
-  it('debe mostrar un mensaje de error y no navegar si el registro falla', () => {
-    authServiceMock.registerUser.and.returnValue(false); // Simula un fallo en el registro
+  it('debe mostrar un mensaje de error y no navegar si el correo electrónico ya está en uso', async () => {
+    authServiceMock.registerUser.and.returnValue(false);
     component.user.name = 'Test User';
-    component.user.email = 'fail@example.com';
+    component.user.email = 'existing@example.com';
     component.user.password = 'password123';
 
-    const consoleErrorSpy = spyOn(console, 'error'); // Espiar la función console.error
+    const alert = jasmine.createSpyObj('HTMLIonAlertElement', ['present']);
+    alertControllerSpy.create.and.returnValue(Promise.resolve(alert));
 
-    component.register();
+    await component.register();
 
-    expect(consoleErrorSpy).toHaveBeenCalledWith('Error en el registro. El correo electrónico ya está en uso.');
+    expect(alertControllerSpy.create).toHaveBeenCalled();
+    expect(alert.present).toHaveBeenCalled();
     expect(localStorage.getItem('isLoggedIn')).toBeNull();
     expect(localStorage.getItem('loggedInEmail')).toBeNull();
     expect(routerMock.navigate).not.toHaveBeenCalled();

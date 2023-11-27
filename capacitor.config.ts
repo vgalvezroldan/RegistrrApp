@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appName: 'evaluacion2',
   webDir: 'www',
   plugins: {
-    BarcodeScanner: {
+    Camera: {
       // Configuraciones específicas del plugin si son necesarias
     },
   },

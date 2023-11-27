@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
 import { Location } from '@angular/common';
-import { Platform } from '@ionic/angular';
-import { Plugins } from '@capacitor/core';
-const { App } = Plugins;
+import { AuthService } from '../../services/auth.service';
+
 
 
 @Component({
@@ -13,23 +12,30 @@ const { App } = Plugins;
 })
 export class AlumnoPage implements OnInit {
   username : string = '';
+  videoStream : MediaStream | null = null;
 
   constructor(
+    private authService: AuthService,
     private router: Router,
     private location: Location,
-    private platform: Platform,
     ) { }
   
+
+  openCamera() {
+    this.authService.openCamera().then(stream => {
+      if (stream) {
+        this.videoStream = stream;
+      }else{
+        console.log('No se pudo abrir la camara');
+      }
+    });
+  }
+
 
   ngOnInit() {
     this.username = localStorage.getItem('loggedInName') || 'Invitado';
   }
 
-  openCameraApp() {
-    const cameraAppUrl = 'intent://scan/#Intent;scheme=zxing;package=com.google.zxing.client.android;end'; // Cambia esto según la aplicación de cámara que uses
-  
-    window.location.href = cameraAppUrl;
-  }
   
   
   navigateBack() {

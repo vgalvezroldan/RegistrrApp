@@ -35,7 +35,7 @@ export class RegisterPage {
     if (success) {
       localStorage.setItem('isLoggedIn', 'true');
       localStorage.setItem('loggedInEmail', this.user.email);
-      this.router.navigate(['/home']);
+      this.router.navigate(['/profesor']);
     } else {
       await this.mostrarAlerta('Error en el registro', 'El correo electrónico ya está en uso.');
     }
@@ -52,7 +52,7 @@ export class RegisterPage {
   
   
   navigateToHome() {
-    this.router.navigate(['/home']); 
+    this.router.navigate(['/']); 
   }
   navigateBack() {
    this.location.back(); 

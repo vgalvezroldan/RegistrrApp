@@ -10,27 +10,29 @@
   <ion-grid>
     <ion-row class="ion-justify-content-center">
       <ion-col size="12" class="ion-text-center image-container">
-  
         <img src="assets/images/yEn2L7ny_400x400.jpg" alt="Descripción de la imagen" />
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center">
       <ion-col size="12" class="ion-text-center">
-     
         <ion-card>
           <ion-card-content>
             <div *ngIf="qrCodeValue">
               <img [src]="qrCodeValue" alt="Código QR">
             </div>
           </ion-card-content>
-          
         </ion-card>
-       
       </ion-col>
     </ion-row>
     <ion-row class="ion-justify-content-center">
       <ion-col size="auto">
-        <ion-button (click)="openRegisteredUsersPage()">Usuarios Registrados</ion-button>
+        <ion-button color="dark" (click)="openRegisteredUsersPage()">Usuarios Registrados</ion-button>
+      </ion-col>
+    </ion-row>
+    <!-- Botón para registrar alumno -->
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="auto">
+        <ion-button color="dark" (click)="navigateToRegister()">Registrar Alumno</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -7,6 +7,8 @@ export class AuthService {
   private users: any[];
 
   constructor() {
+
+    
      // Inicializar 'users' desde localStorage
      this.users = JSON.parse(localStorage.getItem('users') || '[]');
 
@@ -65,6 +67,27 @@ export class AuthService {
   getUserByEmail(email: string) {
     return this.users.find(user => user.email === email);
   }
+
+  // Validar si el usuario es profesor sino enviar a page alumno
+
+  isProfessor(email: string): boolean {
+    return email === 'profesor@duocuc.cl'; // Asumiendo que este es el correo del profesor
 }
+
+
+async openCamera(): Promise<MediaStream | undefined> {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    // Retorno exitoso del stream
+    return stream;
+  } catch (err) {
+    console.error('Error al abrir la cámara:', err);
+    // Retorno de undefined en caso de error
+    return undefined;
+  }
+}
+}
+
+
 
 

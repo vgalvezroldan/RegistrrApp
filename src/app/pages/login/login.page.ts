@@ -10,7 +10,7 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-    user = {
+  user = {
     email: '',
     password: ''
   };
@@ -23,35 +23,31 @@ export class LoginPage {
   ) {}
 
   async login() {
-    // Verificar si el correo electrónico contiene '@'
     if (!this.user.email.includes('@')) {
       await this.mostrarAlerta('Correo inválido', 'Por favor, ingrese un correo electrónico válido.');
       return;
     }
   
-    // Verificar si la contraseña está vacía
     if (!this.user.password) {
       await this.mostrarAlerta('Contraseña inválida', 'Por favor, ingrese una contraseña.');
       return;
     }
   
-    // Intentar iniciar sesión
     if (this.authService.login(this.user.email, this.user.password)) {
       localStorage.setItem('isLoggedIn', 'true');
       localStorage.setItem('loggedInEmail', this.user.email);
 
-      const currentUser = this.authService.getCurrentUser(this.user.email);
-      if (currentUser) {
-        localStorage.setItem('loggedInName', currentUser.name); // Almacena el nombre del usuario
 
-        // Redirigir según el nombre del usuario
-        if (currentUser.name === 'Alumno') {
-          this.router.navigate(['/alumno']);
-        } else if (currentUser.name === 'Profesor') {
-          this.router.navigate(['/profesor']);
-        } else {
-          this.router.navigate(['/welcome']);
-        }
+      const user = this.authService.getUserByEmail(this.user.email);
+      if (user) {
+        localStorage.setItem('loggedInName', user.name);
+      }
+
+      // Verifica si el usuario es el profesor
+      if (this.authService.isProfessor(this.user.email)) {
+        this.router.navigate(['/profesor']);
+      } else {
+        this.router.navigate(['/alumno']); // Redirige a todos los demás usuarios a la página de Alumno
       }
     } else {
       await this.mostrarAlerta('Error de inicio de sesión', 'Correo electrónico o contraseña incorrectos.');

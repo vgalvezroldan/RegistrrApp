@@ -59,6 +59,10 @@ export class ProfesorPage implements OnInit {
       localStorage.removeItem('loggedInEmail');
       localStorage.removeItem('loggedInName');
     }
+
+    navigateToRegister() {
+      this.router.navigate(['/register']);
+    }
   }
   
 

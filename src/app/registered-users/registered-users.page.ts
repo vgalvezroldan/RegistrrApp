@@ -19,9 +19,12 @@ export class RegisteredUsersPage implements OnInit {
     this.users = this.authService.getRegisteredUsers();
   }
   navigateToHome() {
-    this.router.navigate(['/home']); 
+    this.router.navigate(['/']); 
   }
   navigateBack() {
    this.location.back(); 
   }
+
+  
+
 }
