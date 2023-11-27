@@ -12,6 +12,7 @@ import * as QRCode from 'qrcode'; // Importa la biblioteca qrcode
 
 export class ProfesorPage implements OnInit {
   qrCodeValue: string = ''; // Variable para almacenar el valor del código QR
+  username : string = ''; // Variable para almacenar el nombre de usuario
 
   constructor(
     private router: Router,
@@ -20,6 +21,7 @@ export class ProfesorPage implements OnInit {
   
   ngOnInit() {
     this.generateQRCode();
+    this.username = localStorage.getItem('loggedInName') || 'Invitado';
   }
 
   generateQRCode() {
@@ -41,13 +43,22 @@ export class ProfesorPage implements OnInit {
   openRegisteredUsersPage() {
     this.router.navigate(['/registered-users']); 
   }
-
-  navigateToHome() {
-    this.router.navigate(['/home']); 
+  
+    navigateToHome() {
+      this.clearSession();
+      this.router.navigate(['/home']);
+    }
+  
+    navigateBack() {
+      this.clearSession();
+      this.location.back();
+    }
+  
+    private clearSession() {
+      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('loggedInEmail');
+      localStorage.removeItem('loggedInName');
+    }
   }
-
-  navigateBack() {
-    this.location.back(); 
-  }
-}
+  
 

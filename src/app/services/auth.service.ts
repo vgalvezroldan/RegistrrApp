@@ -7,15 +7,31 @@ export class AuthService {
   private users: any[];
 
   constructor() {
-    // Inicializar 'users' desde localStorage
-    this.users = JSON.parse(localStorage.getItem('users') || '[]');
+     // Inicializar 'users' desde localStorage
+     this.users = JSON.parse(localStorage.getItem('users') || '[]');
 
-    // Agregar directamente los usuarios 'Alumno' y 'Profesor' al localStorage
-    localStorage.setItem('users', JSON.stringify([
-      { name: 'Alumno', email: 'alumno@duocuc.cl', password: '12345'},
-      { name: 'Profesor', email: 'profesor@duocuc.cl', password: '12345'}
-    ]));
-  }
+     // Verificar y añadir usuarios predefinidos si no existen
+     this.ensurePredefinedUsers();
+   }
+ 
+   private ensurePredefinedUsers(): void {
+     const predefinedUsers = [
+       { name: 'Alumno', email: 'alumno@duocuc.cl', password: '12345'},
+       { name: 'Profesor', email: 'profesor@duocuc.cl', password: '12345'}
+     ];
+ 
+     let needsUpdate = false;
+     predefinedUsers.forEach(predefinedUser => {
+       if (!this.userExists(predefinedUser.email)) {
+         this.users.push(predefinedUser);
+         needsUpdate = true;
+       }
+     });
+ 
+     if (needsUpdate) {
+       localStorage.setItem('users', JSON.stringify(this.users));
+     }
+   }
 
   registerUser(name: string, email: string, password: string): boolean {
     const userExists = this.users.some(user => user.email === email);
@@ -40,6 +56,7 @@ export class AuthService {
   getCurrentUser(email: string) {
     return this.users.find(user => user.email === email);
   }
+  
 
   getRegisteredUsers() {
     return this.users;

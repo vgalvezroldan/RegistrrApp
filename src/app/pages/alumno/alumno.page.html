@@ -2,15 +2,26 @@
   <ion-toolbar>
     <ion-icon name="arrow-back-outline" role="img" class="icon-back" aria-label="back" (click)="navigateBack()"></ion-icon>
     <ion-icon name="home-outline" role="img" class="icon-home" aria-label="home" (click)="navigateToHome()"></ion-icon>
-    <ion-title class="ion-text-center">Bienvenido</ion-title> 
+
+    <ion-title class="ion-text-center">Bienvenido, {{ username }}</ion-title> 
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="centrar-boton">
-    <ion-button class="boton-qr" (click)="scanQRCode()">Escanear Código QR</ion-button>
-  </div>
-</ion-content>
-
-
-
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" class="ion-text-center image-container"> 
+        <img src="assets/images/yEn2L7ny_400x400.jpg" alt="Descripción de la imagen" />
+      </ion-col>
+    </ion-row>
+ 
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="12" class="ion-text-center">
+            <div class="centrar-boton">
+              <ion-button class="boton-camara" (click)="openCamera()">Abrir Cámara</ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-content>
+    

@@ -1,21 +1,29 @@
-ion-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%; // Asegúrate de que ion-content ocupe toda la altura disponible
+.image-container {
+    // Ajusta el margen y el relleno según sea necesario para reducir el espacio
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
   
-    .centrar-boton {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%; // Ocupa todo el ancho disponible
-      padding-top: 350px;
-      .boton-qr {
-        --background: black; // Color de fondo del botón
-        --color: white; // Color del texto del botón
+  .centrar-boton {
+    // Ajusta el margen y el relleno del botón para reducir el espacio desde arriba
+    margin-top: 0;
+    padding-top: 0;
   
-        // Otras propiedades de estilo si es necesario, como padding, bordes, etc.
-      }
+    .boton-qr {
+      --background: black;
+      --color: white;
+      // Otros estilos del botón
     }
   }
+
+  :host {
+    ion-title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%; // Establece un ancho máximo
+    }
+  }
+  
+  
   

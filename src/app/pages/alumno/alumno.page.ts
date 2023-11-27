@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { QrScannerService } from '../../services/qr-scanner.service'; // Ajusta la ruta según la ubicación de tu servicio
 import { Router} from '@angular/router';
 import { Location } from '@angular/common';
+import { Platform } from '@ionic/angular';
+import { Plugins } from '@capacitor/core';
+const { App } = Plugins;
 
 
 @Component({
@@ -10,36 +12,44 @@ import { Location } from '@angular/common';
   styleUrls: ['./alumno.page.scss'],
 })
 export class AlumnoPage implements OnInit {
+  username : string = '';
 
-  constructor(private qrScannerService: QrScannerService,
+  constructor(
     private router: Router,
-    private location: Location,) { }
+    private location: Location,
+    private platform: Platform,
+    ) { }
   
 
   ngOnInit() {
+    this.username = localStorage.getItem('loggedInName') || 'Invitado';
   }
 
-  async scanQRCode() {
-    try {
-      const qrCodeData = await this.qrScannerService.scanQR(); // Escanear el código QR
-      if (qrCodeData) {
-        const alumnoInfo = JSON.parse(qrCodeData); // Decodificar la información
-        // Aquí puedes implementar la lógica para registrar la asistencia
-        // y enviar un correo electrónico al profesor
-      }
-    } catch (error) {
-      console.error('Error al escanear el código QR:', error);
-    }
-  }
-
+  openCameraApp() {
+    const cameraAppUrl = 'intent://scan/#Intent;scheme=zxing;package=com.google.zxing.client.android;end'; // Cambia esto según la aplicación de cámara que uses
   
-  navigateToHome() {
-    this.router.navigate(['/home']); 
+    window.location.href = cameraAppUrl;
   }
+  
+  
   navigateBack() {
-   this.location.back(); 
+    this.clearSession();
+    this.location.back();
+  }
+
+  navigateToHome() {
+    this.clearSession();
+    this.router.navigate(['/home']);
+  }
+  
+  private clearSession() {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('loggedInEmail');
+    localStorage.removeItem('loggedInName');
+    // Aquí puedes eliminar cualquier otra información relacionada con la sesión del usuario
   }
 }
+
 
 
   

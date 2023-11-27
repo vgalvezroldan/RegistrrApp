@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
+import { Camera, CameraResultType } from '@capacitor/camera';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,18 +9,17 @@ export class QrScannerService {
 
   constructor() {}
 
-  async scanQR() {
-    // Solicitar permiso para usar la cámara
-    const status = await BarcodeScanner.checkPermission({ force: true });
-
-    if (status.granted) {
-      // Iniciar el escaneo
-      const result = await BarcodeScanner.startScan();
-      if (result.hasContent) {
-        console.log(result.content); // Aquí manejas el contenido del código QR
-        return result.content;
-      }
+  async openCamera() {
+    try {
+      const image = await Camera.getPhoto({
+        quality: 100,
+        allowEditing: false,
+        resultType: CameraResultType.Uri
+      });
+      console.log(image);
+      // Aquí puedes manejar la imagen o el URI devuelto por la cámara
+    } catch (error) {
+      console.error('Error al abrir la cámara:', error);
     }
-    return null;
   }
 }
