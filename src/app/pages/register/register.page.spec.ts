@@ -69,6 +69,4 @@ describe('RegisterPage', () => {
     expect(localStorage.getItem('loggedInEmail')).toBeNull();
     expect(routerMock.navigate).not.toHaveBeenCalled();
   });
-
-  // ... Más pruebas según sea necesario ...
 });

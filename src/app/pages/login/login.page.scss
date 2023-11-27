@@ -1,0 +1,27 @@
+.custom-item {
+    border-radius: 10px; // Esquinas redondeadas
+    background-color: white; // Fondo blanco para cada item
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Sombra suave
+    margin-bottom: 15px; // Espacio entre los items
+  
+    ion-label {
+      color: #333; // Color personalizado para las etiquetas
+    }
+  
+    ion-input {
+      --padding-start: 10px; // Espaciado interno para el input
+      --padding-end: 10px;
+    }
+  }
+
+.black-button {
+  --background: black; // Cambia el fondo a negro
+  --color: white; // Cambia el texto a blanco
+
+  &:disabled {
+    --background: #444; // Fondo más claro para el estado desactivado
+    --color: #ccc; // Color de texto para el estado desactivado
+  }
+}
+
+  

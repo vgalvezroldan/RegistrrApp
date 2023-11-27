@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { PasswordRecoveryPage } from '../password-recovery/password-recovery.page';
+import { Location } from '@angular/common';
+import { AlertController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-login',
@@ -16,18 +18,55 @@ export class LoginPage {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private location: Location,
+    private alertController: AlertController 
   ) {}
 
-  login() {
+  async login() {
+    // Verificar si el correo electrónico contiene '@'
+    if (!this.user.email.includes('@')) {
+      await this.mostrarAlerta('Correo inválido', 'Por favor, ingrese un correo electrónico válido.');
+      return;
+    }
+  
+    // Verificar si la contraseña está vacía
+    if (!this.user.password) {
+      await this.mostrarAlerta('Contraseña inválida', 'Por favor, ingrese una contraseña.');
+      return;
+    }
+  
+    // Intentar iniciar sesión
     if (this.authService.login(this.user.email, this.user.password)) {
       localStorage.setItem('isLoggedIn', 'true');
       localStorage.setItem('loggedInEmail', this.user.email);
-      this.router.navigate(['/welcome']);
+
+      const currentUser = this.authService.getCurrentUser(this.user.email);
+
+    // Redirigir según el nombre del usuario
+    if (currentUser && currentUser.name === 'Alumno') {
+      this.router.navigate(['/alumno']);
+    } else if (currentUser && currentUser.name === 'Profesor') {
+      this.router.navigate(['/profesor']);
     } else {
-      console.error('Las credenciales son incorrectas.');
+      // Redirigir a una página por defecto si no es Alumno ni Profesor
+      this.router.navigate(['/welcome']);
     }
-  }
+  } else {
+      await this.mostrarAlerta('Error de inicio de sesión', 'Correo electrónico o contraseña incorrectos.');
+    }}
+  
+
+
+  
+  private async mostrarAlerta(header: string, message: string) {
+    const alert = await this.alertController.create({
+      header,
+      message,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }  
 
   openPasswordRecovery() {
     this.router.navigate(['/password-recovery']);
@@ -35,5 +74,8 @@ export class LoginPage {
 
   navigateToHome() {
     this.router.navigate(['/home']); 
+  }
+  navigateBack() {
+   this.location.back(); 
   }
 }

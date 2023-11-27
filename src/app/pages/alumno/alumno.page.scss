@@ -1,0 +1,21 @@
+ion-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; // Asegúrate de que ion-content ocupe toda la altura disponible
+  
+    .centrar-boton {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%; // Ocupa todo el ancho disponible
+      padding-top: 350px;
+      .boton-qr {
+        --background: black; // Color de fondo del botón
+        --color: white; // Color del texto del botón
+  
+        // Otras propiedades de estilo si es necesario, como padding, bordes, etc.
+      }
+    }
+  }
+  

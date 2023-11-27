@@ -1,0 +1,10 @@
+.black-button {
+    --background: black; // Cambia el fondo a negro
+    --color: white; // Cambia el texto a blanco
+  
+    &:disabled {
+      --background: #444; // Fondo más claro para el estado desactivado
+      --color: #ccc; // Color de texto para el estado desactivado
+    }
+  }
+  

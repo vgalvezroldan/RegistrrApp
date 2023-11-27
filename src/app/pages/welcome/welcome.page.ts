@@ -12,6 +12,7 @@ import { Location } from '@angular/common';
 export class WelcomePage implements OnInit {
   userName: string = '';
   weatherData: any = null; 
+  
 
   constructor(
     private authService: AuthService, 

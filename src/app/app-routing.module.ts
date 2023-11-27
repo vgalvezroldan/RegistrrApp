@@ -32,7 +32,23 @@ const routes: Routes = [
   {
     path: 'registered-users',
     loadChildren: () => import('./registered-users/registered-users.module').then( m => m.RegisteredUsersPageModule)
+  },  {
+    path: 'alumno',
+    loadChildren: () => import('./pages/alumno/alumno.module').then( m => m.AlumnoPageModule)
   },
+  {
+    path: 'profesor',
+    loadChildren: () => import('./pages/profesor/profesor.module').then( m => m.ProfesorPageModule)
+  },
+  {
+    path: 'alumno',
+    loadChildren: () => import('./pages/alumno/alumno.module').then( m => m.AlumnoPageModule)
+  },
+  {
+    path: 'profesor',
+    loadChildren: () => import('./pages/profesor/profesor.module').then( m => m.ProfesorPageModule)
+  },
+
   
 ];
 
