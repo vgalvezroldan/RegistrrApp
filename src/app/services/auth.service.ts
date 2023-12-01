@@ -77,15 +77,16 @@ export class AuthService {
 
 async openCamera(): Promise<MediaStream | undefined> {
   try {
-    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-    // Retorno exitoso del stream
+    const constraints = { video: { facingMode: "environment" } }; // Cámara trasera
+    const stream = await navigator.mediaDevices.getUserMedia(constraints);
     return stream;
   } catch (err) {
     console.error('Error al abrir la cámara:', err);
-    // Retorno de undefined en caso de error
     return undefined;
   }
 }
+
+
 }
 
 

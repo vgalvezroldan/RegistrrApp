@@ -18,8 +18,9 @@
         <ion-row class="ion-justify-content-center">
           <ion-col size="12" class="ion-text-center">
             <div class="centrar-boton">
-              <video #videoElement *ngIf="videoStream" [srcObject]="videoStream" autoplay></video>
-              <ion-button color="dark" (click)="openCamera()">Abrir Cámara</ion-button>              
+              <video #videoElement id="videoElement" *ngIf="videoStream" autoplay></video>
+              <ion-button (click)="openCameraAndScanQR()">Abrir Cámara y Escanear QR</ion-button>
+                    
             </div>
           </ion-col>
         </ion-row>
