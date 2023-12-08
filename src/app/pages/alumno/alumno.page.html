@@ -2,7 +2,6 @@
   <ion-toolbar>
     <ion-icon name="arrow-back-outline" role="img" class="icon-back" aria-label="back" (click)="navigateBack()"></ion-icon>
     <ion-icon name="home-outline" role="img" class="icon-home" aria-label="home" (click)="navigateToHome()"></ion-icon>
-
     <ion-title class="ion-text-center">Bienvenido, {{ username }}</ion-title> 
   </ion-toolbar>
 </ion-header>
@@ -15,15 +14,18 @@
       </ion-col>
     </ion-row>
  
-        <ion-row class="ion-justify-content-center">
-          <ion-col size="12" class="ion-text-center">
-            <div class="centrar-boton">
-              <video #videoElement id="videoElement" *ngIf="videoStream" autoplay></video>
-              <ion-button (click)="openCameraAndScanQR()">Abrir Cámara y Escanear QR</ion-button>
-                    
-            </div>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-content>
-    
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" class="ion-text-center">
+        <div class="centrar-boton">
+          <video #videoElement id="videoElement" *ngIf="videoStream" autoplay></video>
+          <ion-button (click)="openCameraAndScanQR()">Abrir Cámara y Escanear QR</ion-button>
+
+          <!-- Botón de registro manual -->
+          <ion-button *ngIf="showManualRegistrationButton" (click)="navigateToManualRegistration()">
+            ¿Desea registrarse manualmente?
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

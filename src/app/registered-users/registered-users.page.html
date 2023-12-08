@@ -8,27 +8,42 @@
 
 <ion-content>
   <ion-grid>
+   
     <ion-row class="ion-justify-content-center">
       <ion-col size="12" class="ion-text-center image-container">
-       
         <img src="assets/images/yEn2L7ny_400x400.jpg" alt="Descripción de la imagen" />
       </ion-col>
     </ion-row>
+    
     <ion-row class="ion-justify-content-center">
       <ion-col size="12" class="ion-text-center">
-
         <ion-list>
-          <ion-card *ngFor="let user of users"> 
-            <ion-card-content>
-              <ion-label>
-                <h2>{{ user.name }}</h2>
-                <p>{{ user.email }}</p>
-              </ion-label>
-            </ion-card-content>
-          </ion-card>
+          <ion-item *ngFor="let profesor of profesores">
+            <ion-label>
+              <h2>Docente: {{ profesor.email }}</h2>
+            </ion-label>
+          </ion-item>
         </ion-list>
-        
-      
+      </ion-col>
+    </ion-row>
+  
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" class="ion-text-center">
+        <ion-list>
+          <ion-item *ngFor="let alumno of alumnos">
+            <ion-label>
+              <h2>{{ alumno.name }}</h2>
+              <p>{{ alumno.email }}</p>
+            </ion-label>
+            <ion-checkbox slot="end" [(ngModel)]="alumno.present"></ion-checkbox>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="auto">
+        <ion-button color="dark" (click)="saveAttendanceList()">Guardar Lista</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
