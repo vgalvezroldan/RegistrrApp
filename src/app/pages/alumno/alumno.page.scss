@@ -5,15 +5,11 @@
   }
   
   .centrar-boton {
-    // Ajusta el margen y el relleno del botón para reducir el espacio desde arriba
-    margin-top: 0;
-    padding-top: 0;
-  
-    .boton-qr {
-      --background: black;
-      --color: white;
-      // Otros estilos del botón
-    }
+    height: 500px; // Ajusta este valor según el tamaño que deseas para el contenedor
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   :host {
@@ -24,6 +20,52 @@
       max-width: 100%; // Establece un ancho máximo
     }
   }
+
+  ion-content {
+    --background: none;
+    background: url('../../../assets/images/scan_qr.svg');
+    background-size: cover; // Esto asegura que la imagen cubra todo el fondo
+    overflow: hidden;
+    }
+
+  // Estilos específicos para el botón de abrir cámara y escanear QR
+.camera-qr-button {
+  --background: rgba(255, 165, 0, 1); // Fondo amarillo
+  --color: black; // Texto en negro
+
+  margin-top: 480px;
+}
+
+
+.custom-title {
+  background-color: rgba(0, 0, 255, 0.1); // Azul intenso con una transparencia moderada
+  // Otros estilos si son necesarios...
+}
+
+
+.custom-footer-title {
+  background-color: rgba(0, 0, 139, 0.3); // Azul oscuro con transparencia
+  // Otros estilos si son necesarios...
+}
+
+
+ion-button{
+  --background: rgba(255, 165, 0, 1); // Fondo amarillo
+  --color: black;
+}
   
-  
-  
+
+#videoElement {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain; // Esto mantiene la proporción del video
+}
+
+.camera-qr-button {
+  position: absolute;
+  bottom: 20px; // Ajusta según sea necesario
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+

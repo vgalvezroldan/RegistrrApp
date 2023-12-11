@@ -2,17 +2,13 @@
   <ion-toolbar>
     <ion-icon name="arrow-back-outline" role="img" class="icon-back" aria-label="back" (click)="navigateBack()"></ion-icon>
     <ion-icon name="home-outline" role="img" class="icon-home" aria-label="home" (click)="navigateToHome()"></ion-icon>
-    <ion-title class="ion-text-center">Bienvenido, {{ username }}</ion-title> 
+    <ion-title class="ion-text-center custom-title">Bienvenido, {{ username }}</ion-title> 
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-grid>
-    <ion-row class="ion-justify-content-center">
-      <ion-col size="12" class="ion-text-center image-container">
-        <img src="assets/images/yEn2L7ny_400x400.jpg" alt="Descripción de la imagen" />
-      </ion-col>
-    </ion-row>
+    
     <ion-row class="ion-justify-content-center">
       <ion-col size="12" class="ion-text-center">
         <ion-card>
@@ -26,13 +22,13 @@
     </ion-row>
     <ion-row class="ion-justify-content-center">
       <ion-col size="auto">
-        <ion-button color="dark" (click)="openRegisteredUsersPage()">Pasar Lista</ion-button>
+        <ion-button  (click)="openRegisteredUsersPage()">Pasar Lista</ion-button>
       </ion-col>
     </ion-row>
     <!-- Botón para registrar alumno -->
     <ion-row class="ion-justify-content-center">
       <ion-col size="auto">
-        <ion-button color="dark" (click)="navigateToRegister()">Registrar Alumno Manualmente</ion-button>
+        <ion-button (click)="navigateToRegister()">Registrar Alumno Manualmente</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

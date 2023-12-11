@@ -2,20 +2,15 @@
   <ion-toolbar>
     <ion-icon name="arrow-back-outline" role="img" class="icon-back" aria-label="back" (click)="navigateBack()"></ion-icon>
     <ion-icon name="home-outline" role="img" class="icon-home" aria-label="home" (click)="navigateToHome()"></ion-icon>
-    <ion-title class="ion-text-center">Usuarios Registrados</ion-title> 
+    <ion-title class="ion-text-center custom-title">Usuarios Registrados</ion-title> 
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-grid>
-   
-    <ion-row class="ion-justify-content-center">
-      <ion-col size="12" class="ion-text-center image-container">
-        <img src="assets/images/yEn2L7ny_400x400.jpg" alt="Descripción de la imagen" />
-      </ion-col>
-    </ion-row>
     
-    <ion-row class="ion-justify-content-center">
+    <br><br><br><br><br>
+   <ion-row class="ion-justify-content-center">
       <ion-col size="12" class="ion-text-center">
         <ion-list>
           <ion-item *ngFor="let profesor of profesores">
@@ -43,7 +38,7 @@
     
     <ion-row class="ion-justify-content-center">
       <ion-col size="auto">
-        <ion-button color="dark" (click)="saveAttendanceList()">Guardar Lista</ion-button>
+        <ion-button (click)="saveAttendanceList()">Guardar Lista</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

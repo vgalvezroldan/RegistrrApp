@@ -17,3 +17,44 @@
     }
   }
   
+  ion-content {
+    --background: none;
+    background: url('../../../assets/images/fondo_azul.svg') no-repeat center center / cover;
+    background-size: cover; // Esto asegura que la imagen cubra todo el fondo
+    overflow: hidden;
+    }
+
+    .custom-item {
+      --background: rgba(255, 165, 0, 1); // Fondo anaranjado
+      --color: black; // Texto en negro para el contenido
+      --placeholder-color: black; // Color del texto del placeholder en negro
+    
+      // Estilos para el ion-label
+      ion-label {
+        color: black; // Color de texto para las etiquetas
+      }
+    
+      // Estilos para el ion-input
+      ion-input {
+        --color: black; // Color del texto para el input
+        --placeholder-color: black; // Color del texto del placeholder en negro
+        --background: rgba(255, 165, 0, 1); // Fondo anaranjado
+      }
+    }
+
+    ion-button {
+      --color: black; // Color del texto para el input
+      --placeholder-color: black; // Color del texto del placeholder en negro
+      --background: rgba(255, 165, 0, 1); // Fondo anaranjado
+    }
+
+    .custom-title {
+      background-color: rgba(0, 0, 255, 0.1); // Azul intenso con una transparencia moderada
+      // Otros estilos si son necesarios...
+    }
+    
+    
+    .custom-footer-title {
+      background-color: rgba(0, 0, 139, 0.3); // Azul oscuro con transparencia
+      // Otros estilos si son necesarios...
+    }

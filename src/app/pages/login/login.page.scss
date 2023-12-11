@@ -1,27 +1,123 @@
 .custom-item {
-    border-radius: 10px; // Esquinas redondeadas
-    background-color: white; // Fondo blanco para cada item
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Sombra suave
-    margin-bottom: 15px; // Espacio entre los items
-  
-    ion-label {
-      color: #333; // Color personalizado para las etiquetas
-    }
-  
-    ion-input {
-      --padding-start: 10px; // Espaciado interno para el input
-      --padding-end: 10px;
-    }
+  border-radius: 10px; // Esquinas redondeadas
+  background-color: white; // Fondo blanco para cada item
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Sombra suave
+  margin-bottom: 15px; // Espacio entre los items
+
+  ion-label {
+    color: #333; // Color personalizado para las etiquetas
   }
 
-.black-button {
-  --background: black; // Cambia el fondo a negro
-  --color: white; // Cambia el texto a blanco
-
-  &:disabled {
-    --background: #444; // Fondo más claro para el estado desactivado
-    --color: #ccc; // Color de texto para el estado desactivado
+  ion-input {
+    --padding-start: 10px; // Espaciado interno para el input
+    --padding-end: 10px;
   }
 }
 
+.custom-item ion-input:focus {
+  --padding-start: 10px;
+  --padding-end: 10px;
+}
+
+.black-button {
+--background: rgba(255, 165, 0, 1); // Fondo anaranjado
+--color: black;                     // Texto en negro
+border: 20px;            // Bordes en negro
+width: 200px;                       // Ancho del botón
+padding: 0.1px 10px;                  // Padding reducido (vertical y horizontal)
+line-height: 1;                     // Line-height reducido
+min-height: 0;                      // Anulando min-height predeterminado
+position: absolute;
+top: 445px;
+left: 80px;
+
+&:disabled {
+  --background: #444; // Fondo más claro para el estado desactivado
+  --color: #ccc; // Color de texto para el estado desactivado
+}
+}
+
+ion-content {
+--background: none;
+background: url('../../../assets/images/login.svg') no-repeat center center / cover;
+background-size: cover; // Esto asegura que la imagen cubra todo el fondo
+overflow: hidden;
+}
+
+.custom-form {
+background-color: rgba(255, 165, 0, 1); // Fondo anaranjado
+color: black; 
+overflow: hidden;  
+
+.custom-item {
+  --padding-start: 5px;  // Reduce el padding izquierdo
+  --padding-end: 5px;    // Reduce el padding derecho
+  --padding-top: 5px;    // Reduce el padding superior
+  --padding-bottom: 5px; // Reduce el padding inferior
+  margin-bottom: 10px;   // Espacio entre los elementos
   
+
+  ion-label {
+    color: black; // Cambiar el color del texto de las etiquetas a negro
+  }
+
+  ion-input {
+    --padding-start: 0;  // Opcional: reduce el padding del input si es necesario
+  }
+}
+}
+
+.custom-item {
+--background: rgba(255, 165, 0, 1); // Fondo anaranjado para los recuadros
+--padding-start: 2px;               // Padding reducido
+--padding-end: 2px;                 
+--padding-top: 2px;                 
+--padding-bottom: 2px;              
+--min-height: 25px;                 // Altura mínima reducida
+top: 305px;
+
+ion-label {
+  color: black;                     // Color del texto de las etiquetas a negro
+  --min-height: 0;                  // Altura mínima eliminada
+  font-size: 0.7rem;                // Tamaño de fuente reducido
+  position: floating;               // Asegurar que la etiqueta flote correctamente
+  margin-bottom: 0;                 // Eliminar cualquier margen inferior
+}
+
+ion-input {
+  --padding-start: 0;               // Padding reducido para el input
+  --padding-end: 0;                 
+  --color: black;                   // Color del texto del input
+  --min-height: 0;                  // Altura mínima eliminada
+  font-size: 0.7rem;                // Tamaño de fuente reducido
+  margin-bottom: 0;                 // Eliminar cualquier margen inferior
+
+
+  &:focus {
+    --padding-start: 0;             // Mantener padding reducido en estado de enfoque
+    --padding-end: 0;               
+    --min-height: 0;                // Mantener altura mínima eliminada en estado de enfoque
+    font-size: 0.7rem;              // Mantener tamaño de fuente en estado de enfoque
+    border: 1px solid transparent;
+  }
+}
+}
+
+.custom-row {
+ion-col {
+  // Ejemplo: Alinear el contenido hacia la derecha y un poco hacia abajo
+  text-align: right;     // Alinear a la derecha
+  margin-top: 325px;      // Mover hacia abajo
+}
+}
+
+.custom-title {
+  background-color: rgba(0, 0, 255, 0.1); // Azul intenso con una transparencia moderada
+  // Otros estilos si son necesarios...
+}
+
+
+.custom-footer-title {
+  background-color: rgba(0, 0, 139, 0.3); // Azul oscuro con transparencia
+  // Otros estilos si son necesarios...
+}

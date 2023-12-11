@@ -2,41 +2,38 @@
   <ion-toolbar>
     <ion-icon name="arrow-back-outline" role="img" class="icon-back" aria-label="back" (click)="navigateBack()"></ion-icon>
     <ion-icon name="home-outline" role="img" class="icon-home" aria-label="home" (click)="navigateToHome()"></ion-icon>
-    <ion-title class="ion-text-center">Registro</ion-title> 
+    <ion-title class="ion-text-center custom-title">Registro</ion-title> 
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-grid>
     <ion-row class="ion-justify-content-center">
-      <ion-col size="12" class="ion-text-center image-container">
-
-        <img src="assets/images/yEn2L7ny_400x400.jpg" alt="Descripción de la imagen" />
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-justify-content-center">
       <ion-col size="12" class="ion-text-center">
       
+        <br><br><br><br><br><br>
+
+
         <form (ngSubmit)="register()">
           <ion-item class="custom-item">
             <ion-label position="floating">Ingrese Nombre del Alumno</ion-label>
-            <ion-input type="text" [(ngModel)]="user.name" name="name" required></ion-input>
+            <ion-input type="text" [(ngModel)]="user.name" name="name" placeholder="Ingrese Nombre del Alumno" required></ion-input>
           </ion-item>
           
           <ion-item class="custom-item">
             <ion-label position="floating">Ingresa Correo Electrónico del Alumno</ion-label>
-            <ion-input type="email" [(ngModel)]="user.email" name="email" required></ion-input>
+            <ion-input type="email" [(ngModel)]="user.email" name="email" placeholder="Ingrese Correo Electrónico del Alumno" required></ion-input>
           </ion-item>
           
           <ion-item class="custom-item">
             <ion-label position="floating">Ingresa Contraseña del Alumno</ion-label>
-            <ion-input type="password" [(ngModel)]="user.password" name="password" required></ion-input>
+            <ion-input type="password" [(ngModel)]="user.password" name="password" placeholder="Ingrese Contraseña del Alumno" required></ion-input>
           </ion-item>
           
 
           <ion-row class="ion-justify-content-center">
             <ion-col size="auto">
-              <ion-button class="equal-width black-button" expand="block" type="submit" [disabled]="!user.email || !user.password || !user.name">Registrar</ion-button>
+              <ion-button class="equal-width" expand="block" type="submit" [disabled]="!user.email || !user.password || !user.name">Registrar</ion-button>
             </ion-col>
           </ion-row>
           
